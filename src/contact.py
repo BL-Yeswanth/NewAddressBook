@@ -13,11 +13,10 @@ class Contact:
         self.email = email
 
     def display(self):
-        print("First Name :", self.first_name)
-        print("Last Name  :", self.last_name)
-        print("Address    :", self.address)
-        print("City       :", self.city)
-        print("State      :", self.state)
-        print("Zip        :", self.zip_code)
-        print("Phone No   :", self.phone_number)
-        print("Email      :", self.email)
+        print(
+            f"Name   : {self.first_name} {self.last_name}\n"
+            f"Addr   : {self.address}, {self.city}, {self.state} - {self.zip_code}\n"
+            f"Phone  : {self.phone_number}\n"
+            f"Email  : {self.email}\n"
+            f"{'-'*30}"
+        )
