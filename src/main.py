@@ -2,6 +2,7 @@
 from address_book import AddressBook
 from contact import Contact
 from edit_contact import EditContact 
+from delete_contact import DeleteContact
 
 class AddressBookMain:
     def __init__(self):
@@ -54,6 +55,15 @@ class AddressBookMain:
             first_name = input("Enter First Name to edit: ")
             editor = EditContact(self.address_book)  # Create EditContact object
             editor.edit_by_first_name(first_name)    # Call edit method
+            
+        # UC4: Delete contact
+        delete_choice = input("\nDo you want to delete a contact? (yes/no): ").lower()
+
+        if delete_choice == "yes":
+            first_name = input("Enter First Name to delete: ")
+            deleter = DeleteContact(self.address_book)
+            deleter.delete_by_first_name(first_name)
+
 
         # UC2/UC3: Display all added/edited contacts
         self.address_book.display_contacts()
