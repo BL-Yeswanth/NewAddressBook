@@ -5,7 +5,7 @@ class AddressBookMain:
     def start(self):
         print("Welcome to Address Book Program")
         
-        # UC1 : Ability to create a contact
+        # UC1 : Ability to create a contact 
         contact = Contact(
             first_name=input("Enter First Name: "),
             last_name=input("Enter Last Name: "),

@@ -1,6 +1,5 @@
 
 #  UC1 : Ability to create a contact
-
 class Contact:
     def __init__(self, first_name, last_name, address, city,
                  state, zip_code, phone_number, email):
