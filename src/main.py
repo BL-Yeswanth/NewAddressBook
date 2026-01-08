@@ -8,6 +8,7 @@ from search_service import SearchService             # UC8
 from view_person import ViewPerson                   # UC9
 from count_person import CountPerson                 # UC10
 from sort_person import SortPerson                   # UC12
+from file_service import FileService    # UC13
 
 
 class AddressBookMain:
@@ -138,6 +139,29 @@ class AddressBookMain:
                 SortPerson.sort_by_zip(self.address_book)
             else:
                 print("Invalid option selected.")
+                
+            
+                # =========================
+        # UC13: Read / Write Address Book using File IO
+        # =========================
+        file_choice = input(
+            "\nDo you want to Read or Write contacts to file? (yes/no): "
+        ).lower()
+
+        if file_choice == "yes":
+            print("\nFile Options")
+            print("1. Write contacts to file")
+            print("2. Read contacts from file")
+
+            option = input("Enter option (1 or 2): ")
+
+            if option == "1":
+                FileService.write_to_file(self.address_book)
+            elif option == "2":
+                FileService.read_from_file()
+            else:
+                print("Invalid option selected.")
+
 
         # Display all contacts
         self.address_book.display_contacts()
