@@ -10,6 +10,7 @@ from count_person import CountPerson                 # UC10
 from sort_person import SortPerson                   # UC12
 from file_service import FileService    # UC13
 from csv_file_service import CSVFileService   # UC14
+from json_file_service import JSONFileService  # UC15
 
 
 
@@ -184,6 +185,28 @@ class AddressBookMain:
                 CSVFileService.read_from_csv()
             else:
                 print("Invalid option selected.")
+                
+                # =========================
+        # UC15: Read / Write Address Book using JSON File
+        # =========================
+        json_choice = input(
+            "\nDo you want to Read or Write contacts using JSON file? (yes/no): "
+        ).lower()
+
+        if json_choice == "yes":
+            print("\nJSON Options")
+            print("1. Write contacts to JSON")
+            print("2. Read contacts from JSON")
+
+            option = input("Enter option (1 or 2): ")
+
+            if option == "1":
+                JSONFileService.write_to_json(self.address_book)
+            elif option == "2":
+                JSONFileService.read_from_json()
+            else:
+                print("Invalid option selected.")
+
 
 
 
