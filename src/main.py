@@ -9,6 +9,8 @@ from view_person import ViewPerson                   # UC9
 from count_person import CountPerson                 # UC10
 from sort_person import SortPerson                   # UC12
 from file_service import FileService    # UC13
+from csv_file_service import CSVFileService   # UC14
+
 
 
 class AddressBookMain:
@@ -161,6 +163,28 @@ class AddressBookMain:
                 FileService.read_from_file()
             else:
                 print("Invalid option selected.")
+                
+                # =========================
+        # UC14: Read / Write Address Book using CSV File
+        # =========================
+        csv_choice = input(
+            "\nDo you want to Read or Write contacts using CSV file? (yes/no): "
+        ).lower()
+
+        if csv_choice == "yes":
+            print("\nCSV Options")
+            print("1. Write contacts to CSV")
+            print("2. Read contacts from CSV")
+
+            option = input("Enter option (1 or 2): ")
+
+            if option == "1":
+                CSVFileService.write_to_csv(self.address_book)
+            elif option == "2":
+                CSVFileService.read_from_csv()
+            else:
+                print("Invalid option selected.")
+
 
 
         # Display all contacts
