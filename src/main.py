@@ -7,6 +7,7 @@ from address_book_system import AddressBookSystem   # UC6
 from search_service import SearchService             # UC8
 from view_person import ViewPerson                   # UC9
 from count_person import CountPerson                 # UC10
+from sort_person import SortPerson                   # UC12
 
 
 class AddressBookMain:
@@ -106,7 +107,7 @@ class AddressBookMain:
                 CountPerson.count_by_state(self.system.address_books)
 
         # =========================
-        # UC11: Sort contacts by name
+        # UC11: Sort contacts by First Name
         # =========================
         if input("\nDo you want to sort contacts by First Name? (yes/no): ").lower() == "yes":
             sorted_contacts = sorted(
@@ -114,9 +115,29 @@ class AddressBookMain:
                 key=lambda c: c.first_name.lower()
             )
 
-            print("\nSorted Contacts:")
+            print("\nSorted Contacts by First Name:")
             for contact in sorted_contacts:
-                print(contact)   # uses __str__ / toString equivalent
+                print(contact)
+
+        # =========================
+        # UC12: Sort contacts by City / State / Zip
+        # =========================
+        if input("\nDo you want to sort contacts by City, State or Zip? (yes/no): ").lower() == "yes":
+            print("\nSorting Options")
+            print("1. Sort by City")
+            print("2. Sort by State")
+            print("3. Sort by Zip Code")
+
+            option = input("Enter option (1/2/3): ")
+
+            if option == "1":
+                SortPerson.sort_by_city(self.address_book)
+            elif option == "2":
+                SortPerson.sort_by_state(self.address_book)
+            elif option == "3":
+                SortPerson.sort_by_zip(self.address_book)
+            else:
+                print("Invalid option selected.")
 
         # Display all contacts
         self.address_book.display_contacts()
