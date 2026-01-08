@@ -4,6 +4,7 @@ from contact import Contact
 from edit_contact import EditContact
 from delete_contact import DeleteContact
 from address_book_system import AddressBookSystem   # UC6
+from search_service import SearchService             # UC8
 
 
 class AddressBookMain:
@@ -78,6 +79,41 @@ class AddressBookMain:
             first_name = input("Enter First Name to delete: ")
             deleter = DeleteContact(self.address_book)
             deleter.delete_by_first_name(first_name)
+
+        # UC8: Search person by City or State across multiple Address Books
+        search_choice = input(
+            "\nDo you want to search person by City or State? (yes/no): "
+        ).lower()
+
+        if search_choice == "yes":
+            print("\nSearch Options")
+            print("1. Search by City")
+            print("2. Search by State")
+
+            option = input("Enter option (1 or 2): ")
+
+            if option == "1":
+                city = input("Enter City Name: ")
+                results = SearchService.search_by_city(
+                    self.system.address_books, city
+                )
+
+            elif option == "2":
+                state = input("Enter State Name: ")
+                results = SearchService.search_by_state(
+                    self.system.address_books, state
+                )
+
+            else:
+                results = []
+                print("Invalid option selected.")
+
+            if results:
+                print("\nSearch Results:")
+                for contact in results:
+                    contact.display()
+            else:
+                print("No matching persons found.")
 
         # UC2 / UC3 / UC4: Display all contacts
         self.address_book.display_contacts()
