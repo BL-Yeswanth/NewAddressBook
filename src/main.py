@@ -1,20 +1,30 @@
-# UC1: Import AddressBook and Contact classes
+# UC1: Import required classes
 from address_book import AddressBook
 from contact import Contact
-from edit_contact import EditContact 
+from edit_contact import EditContact
 from delete_contact import DeleteContact
+from address_book_system import AddressBookSystem   # UC6
+
 
 class AddressBookMain:
     def __init__(self):
-        # UC1: Create Address Book
-        self.address_book = AddressBook()
+        # UC6: Create AddressBookSystem instead of single AddressBook
+        self.system = AddressBookSystem()
+        self.address_book = None
 
     def start(self):
         # UC1: Display Welcome Message
         print("Welcome to Address Book Program")
 
-        # UC2: Add multiple contacts using while loop
-        # UC5 : Ability to add multiple persons to Address Book
+        # UC6: Create / Select Address Book
+        book_name = input("Enter Address Book Name: ")
+        self.address_book = self.system.create_address_book(book_name)
+
+        # If address book already exists, stop safely
+        if not self.address_book:
+            return
+
+        # UC2 + UC5: Add multiple contacts using while loop
         while True:
             print("\nEnter Contact Details")
 
@@ -42,7 +52,6 @@ class AddressBookMain:
             # UC2: Add contact to address book
             self.address_book.add_contact(contact)
 
-            # UC2: Ask user if they want to continue
             choice = input(
                 "\nDo you want to add another contact? (yes/no): "
             ).lower()
@@ -50,23 +59,27 @@ class AddressBookMain:
             if choice != "yes":
                 break
 
-        # UC3: Ask user if they want to edit a contact
-        edit_choice = input("\nDo you want to edit an existing contact? (yes/no): ").lower()
+        # UC3: Edit contact
+        edit_choice = input(
+            "\nDo you want to edit an existing contact? (yes/no): "
+        ).lower()
+
         if edit_choice == "yes":
             first_name = input("Enter First Name to edit: ")
-            editor = EditContact(self.address_book)  # Create EditContact object
-            editor.edit_by_first_name(first_name)    # Call edit method
-            
+            editor = EditContact(self.address_book)
+            editor.edit_by_first_name(first_name)
+
         # UC4: Delete contact
-        delete_choice = input("\nDo you want to delete a contact? (yes/no): ").lower()
+        delete_choice = input(
+            "\nDo you want to delete a contact? (yes/no): "
+        ).lower()
 
         if delete_choice == "yes":
             first_name = input("Enter First Name to delete: ")
             deleter = DeleteContact(self.address_book)
             deleter.delete_by_first_name(first_name)
 
-
-        # UC2/UC3: Display all added/edited contacts
+        # UC2 / UC3 / UC4: Display all contacts
         self.address_book.display_contacts()
 
 
