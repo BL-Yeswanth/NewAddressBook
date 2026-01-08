@@ -14,6 +14,7 @@ class AddressBookMain:
         print("Welcome to Address Book Program")
 
         # UC2: Add multiple contacts using while loop
+        # UC5 : Ability to add multiple persons to Address Book
         while True:
             print("\nEnter Contact Details")
 

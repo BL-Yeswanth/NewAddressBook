@@ -8,6 +8,7 @@ class AddressBook:
 
     def __init__(self):
         # UC1: Create Address Book with empty contact list
+        # UC5 : add multiple contacts
         self.contacts = []
 
     def add_contact(self, contact):
