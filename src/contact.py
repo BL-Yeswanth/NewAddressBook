@@ -11,7 +11,7 @@ class Contact:
         self.zip_code = zip_code
         self.phone_number = phone_number
         self.email = email
-
+    
     def display(self):
         print(
             f"Name   : {self.first_name} {self.last_name}\n"
@@ -19,4 +19,13 @@ class Contact:
             f"Phone  : {self.phone_number}\n"
             f"Email  : {self.email}\n"
             f"{'-'*30}"
+        )
+
+    def __str__(self):
+        return (
+            f"Name: {self.first_name}| "
+            # f"City: {self.city} | "
+            # f"State: {self.state} | "
+            # f"Phone: {self.phone_number} | "
+            # f"Email: {self.email}"
         )
