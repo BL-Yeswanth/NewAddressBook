@@ -23,9 +23,9 @@ class Contact:
 
     def __str__(self):
         return (
-            f"Name: {self.first_name}| "
-            # f"City: {self.city} | "
-            # f"State: {self.state} | "
-            # f"Phone: {self.phone_number} | "
-            # f"Email: {self.email}"
+            f"Name: {self.first_name} {self.last_name}, "
+            f"City: {self.city}, State: {self.state}, "
+            f"Zip: {self.zip_code}, "
+            f"Phone: {self.phone_number}, "
+            f"Email: {self.email}"
         )
