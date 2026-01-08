@@ -5,6 +5,7 @@ from edit_contact import EditContact
 from delete_contact import DeleteContact
 from address_book_system import AddressBookSystem   # UC6
 from search_service import SearchService             # UC8
+from view_person import ViewPerson                   # UC9
 
 
 class AddressBookMain:
@@ -114,6 +115,25 @@ class AddressBookMain:
                     contact.display()
             else:
                 print("No matching persons found.")
+
+        # UC9: View persons by City or State (Dictionary-based view)
+        view_choice = input(
+            "\nDo you want to view persons by City or State? (yes/no): "
+        ).lower()
+
+        if view_choice == "yes":
+            print("\nView Options")
+            print("1. View by City")
+            print("2. View by State")
+
+            option = input("Enter option (1 or 2): ")
+
+            if option == "1":
+                ViewPerson.view_by_city(self.system.address_books)
+            elif option == "2":
+                ViewPerson.view_by_state(self.system.address_books)
+            else:
+                print("Invalid option selected.")
 
         # UC2 / UC3 / UC4: Display all contacts
         self.address_book.display_contacts()
