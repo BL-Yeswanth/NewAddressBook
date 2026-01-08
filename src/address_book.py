@@ -1,5 +1,5 @@
 from contact import Contact
-
+from duplicate_check import DuplicateCheck
 
 class AddressBook:
     """
@@ -11,10 +11,15 @@ class AddressBook:
         # UC5 : add multiple contacts
         self.contacts = []
 
+   
     def add_contact(self, contact):
-        """
-        UC2: Add a new contact to the address book
-        """
+        # UC7: Duplicate check using separate class
+        checker = DuplicateCheck(self.contacts)
+
+        if checker.is_duplicate(contact.first_name):
+            print("Duplicate contact found. Contact not added.")
+            return
+        # UC2: Add a new contact to the address book
         self.contacts.append(contact)
         print("Contact added successfully.")
 
