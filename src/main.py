@@ -6,6 +6,7 @@ from delete_contact import DeleteContact
 from address_book_system import AddressBookSystem   # UC6
 from search_service import SearchService             # UC8
 from view_person import ViewPerson                   # UC9
+from count_person import CountPerson                 # UC10
 
 
 class AddressBookMain:
@@ -132,6 +133,25 @@ class AddressBookMain:
                 ViewPerson.view_by_city(self.system.address_books)
             elif option == "2":
                 ViewPerson.view_by_state(self.system.address_books)
+            else:
+                print("Invalid option selected.")
+
+        # UC10: Count number of persons by City or State
+        count_choice = input(
+            "\nDo you want to count persons by City or State? (yes/no): "
+        ).lower()
+
+        if count_choice == "yes":
+            print("\nCount Options")
+            print("1. Count by City")
+            print("2. Count by State")
+
+            option = input("Enter option (1 or 2): ")
+
+            if option == "1":
+                CountPerson.count_by_city(self.system.address_books)
+            elif option == "2":
+                CountPerson.count_by_state(self.system.address_books)
             else:
                 print("Invalid option selected.")
 
